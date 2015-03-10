@@ -1,5 +1,3 @@
-var iso8601 = require('iso8601');
-
 /*
  * GET home page.
  */
