@@ -10,11 +10,7 @@ require.config({
     jquery: '/libs/jquery/dist/jquery.min',
     bootstrap: '/libs/bootstrap/dist/js/bootstrap.min',
     angular: '/libs/angular/angular.min',
-    angularRoute: '/libs/angular-route/angular-route.min',
-    angularCookies: '/libs/angular-cookies/angular-cookies.min',
-    angularAria: '/libs/angular-aria/angular-aria.min',
-    angularAnimate: '/libs/angular-animate/angular-animate.min',
-    angularMoment: '/libs/angular-moment/angular-moment'
+    angularRoute: '/libs/angular-route/angular-route.min'
   },
   shim: {
     'moment': {
@@ -36,31 +32,8 @@ require.config({
     'angularRoute': {
       deps: ['angular'],
       'exports': 'angular.route'
-    },
-
-    'angularCookies': {
-      deps: ['angular'],
-      'exports': 'angular.cookies'
-    },
-
-    'angularAria': {
-      deps: ['angular'],
-      'exports': 'angular.aria'
-    },
-
-    'angularAnimate': {
-      deps: ['angular'],
-      'exports': 'angular.animate'
-    },
-
-    'angularMaterial': {
-      deps: ['angular'],
-      'exports': 'angular.material'
-    },
-    'angularMoment': {
-      deps: ['angular', 'moment'],
-      'exports': 'angular.moment'
     }
+
   },
   priority: [
     "angular"
@@ -74,15 +47,11 @@ window.name = "NG_DEFER_BOOTSTRAP!";
 require([
   'bootstrap',
   'angular',
-  'angularMoment',
   'app',
   'routes'
-], function (bootstrap, angular,angularMoment, app, routes) {
-  require(['angular-moment'], function(){
+], function (bootstrap, angular, app, routes) {
     var $html = angular.element(document.getElementsByTagName('html')[0]);
     angular.element().ready(function () {
       angular.resumeBootstrap([app['name']]);
     });
-  });
-
 });

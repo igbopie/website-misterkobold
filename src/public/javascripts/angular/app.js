@@ -8,24 +8,16 @@
 
 define([
   'angular',
-  'angularMoment',
   'angularRoute',
-  'angularCookies',
-  'angularAria',
-  'angularAnimate',
 
   'services',
   'directives',
 
   'controllers',
   'controllers/indexController'
-], function (angular, angularMoment) {
+], function (angular) {
   var app = angular.module('misterkobold', [
     'ngRoute',
-    'ngCookies',
-    'ngAnimate',
-    'ngAria',
-    'angularMoment',
     'misterkobold.services',
     'misterkobold.directives',
     'misterkobold.controllers'
