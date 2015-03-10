@@ -9,6 +9,7 @@
   "dependencies": {
     "bower": "latest",
     "cron": "^1.0.4",
+    "express": "^4.12.2",
     "underscore": "^1.7.0"
   },
   "engines": {
