@@ -17,5 +17,35 @@ define(['angular', 'services'], function (angular, services) {
         });
       };
 
+      this.findOne = function (categoryId,callback) {
+        $http.get(urlBase, {}).success(function (data) {
+          var found;
+          angular.forEach(data, function(category){
+            if (category.url === categoryId) {
+              found = category;
+              return;
+            }
+          });
+          callback(found);
+        }).error(function (error) {
+          callback(error);
+        });
+      };
+
+      this.findOneById = function (categoryId,callback) {
+        $http.get(urlBase, {}).success(function (data) {
+          var found;
+          angular.forEach(data, function(category){
+            if (category.id === categoryId) {
+              found = category;
+              return;
+            }
+          });
+          callback(found);
+        }).error(function (error) {
+          callback(error);
+        });
+      };
+
     }]);
 });

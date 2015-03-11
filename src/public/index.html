@@ -44,7 +44,7 @@
     <div class="container header">
         <div class="row">
             <div class="col-md-2">
-                <a href="/" title="Mister Kobold">
+                <a href="#/" title="Mister Kobold">
                 <img title="Logo Mister Kobold" class="logo" src="/images/mister-kobold.png" alt="Mister Kobold" />
                 </a>
             </div>
@@ -62,10 +62,9 @@
                 </div>
                 <div class="main-menu pull-right" ng-controller="NavCtrl">
                     <ul >
-                        <li ng-repeat="category in categories" class="">
-                            <a href=/{{category.url}}" title="{{category.name}}" ng-bind-html="category.name | sanitize"></a>
+                        <li ng-repeat="category in categories" ng-class="{active: category.active}" >
+                            <a ng-click="selectCategory(category)" href="#/{{category.url}}" title="{{category.name}}" ng-bind-html="category.name | sanitize" ></a>
                         </li>
-                        <li class="${page eq 'sobre-nosotros'?'active':'' }"><a href="/sobre-nosotros" title="Sobre nosotros">Sobre nosotros</a></li>
                     </ul>
 
                 </div>

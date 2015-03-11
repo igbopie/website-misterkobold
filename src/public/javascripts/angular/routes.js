@@ -12,9 +12,13 @@ define(['angular', 'app'], function (angular, app) {
         templateUrl: 'partials/index.html',
         controller: 'IndexCtrl'
       }).
-      when('/q/:questionId', {
-        templateUrl: 'partials/questiondetail.html',
-        controller: 'QuestionDetailCtrl'
+      when('/:category', {
+        templateUrl: 'partials/category.html',
+        controller: 'CategoryCtrl'
+      }).
+      when('/:category/:product', {
+        templateUrl: 'partials/product.html',
+        controller: 'ProductCtrl'
       }).
       otherwise({
         redirectTo: '/'
