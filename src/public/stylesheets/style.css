@@ -243,14 +243,25 @@ p.phone{
 .index{
     margin-bottom:-20px;
 }
+.index .carousel{
+    height: 47px;
+}
+
+.index .carousel-inner{
+    top: -10px;
+}
+
 .index .carousel-control.right {
-    right: -2px;
     left: auto;
 }
+
 .index .carousel-control {
+    color: #666;
+    background: inherit;
     position: absolute;
-    top: 18px;
-    left: -26px;}
+    top: -5px;
+    width: 30px;
+}
 .index .facebook-row p{
     margin-top:6px;
 }

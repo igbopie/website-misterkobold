@@ -14,11 +14,11 @@ define(['angular', 'app'], function (angular, app) {
       }).
       when('/legal', {
         templateUrl: 'partials/legal.html',
-        controller: 'IndexCtrl'
+        controller: 'DummyCtrl'
       }).
       when('/sobre-nosotros', {
         templateUrl: 'partials/aboutus.html',
-        controller: 'IndexCtrl'
+        controller: 'DummyCtrl'
       }).
       when('/contacto', {
         templateUrl: 'partials/contact.html',

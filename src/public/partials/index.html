@@ -4,17 +4,21 @@
             <a href="http://www.facebook.com/misterkobold" target="_blank"><img alt="Facebook" title="Facebook Link" src="/images/icons/FaceBook_48x48.png"/></a>
         </div>
         <div class="col-md-11">
-            <div id="myCarousel" class="carousel slide">
-                <div class="carousel-inner">
-                    <!--c:forEach items="${facebookPosts}" var="facebookPost" varStatus="status">
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner" role="listbox">
+                    <!-- Carousel items -->
+                    <div  ng-repeat="post in feed" class="item" ng-class="{active:post.active}"><p><a href="{{post.link}}" target="_blank">{{post.message}}</a></p></div>
 
-                        <!-- Carousel items 
-                        <div class="item   ${status.first ? 'active' : ''}"><p><a href="${fn:replace(facebookPost.permalink,'&', '&amp;')}" target="_blank">${facebookPost.message}</a></p></div>
-                    </c:forEach -->
                 </div>
                 <!-- Carousel nav -->
-                <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-                <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+                <span class="left carousel-control" data-target="#carousel-example-generic" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </span>
+                <span class="right carousel-control" data-target="#carousel-example-generic" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </span>
             </div>
         </div>
     </div>

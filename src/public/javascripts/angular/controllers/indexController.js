@@ -2,15 +2,28 @@
  * Created by igbopie on 11/16/14.
  */
 
-define(['angular', 'controllers', 'services/categoryService', 'services/productService', 'services/contactService'], function (angular, controllers) {
+define(['angular', 'controllers', 'services/categoryService', 'services/productService', 'services/contactService', 'services/facebookService'], function (angular, controllers) {
 
   /* Controllers */
 
   return controllers
-
-    .controller('IndexCtrl', ['$scope', '$http', "$location", "CategoryService",
+    .controller('DummyCtrl', ['$scope', '$http', "$location", "CategoryService",
       function ($scope, $http, $location, CategoryService) {
 
+      }])
+    .controller('IndexCtrl', ['$scope', '$http', "$location", "FacebookService",
+      function ($scope, $http, $location, FacebookService) {
+        $scope.feed = [];
+        FacebookService.list(function(err, feed){
+          $scope.feed = feed;
+          if ($scope.feed.length > 0) {
+            $scope.feed[0].active = true;
+            // FIX THIS!!!
+            setTimeout(function(){
+              $('.carousel').carousel();
+            });
+          }
+        })
       }])
 
     .controller('NavCtrl', ['$scope', '$http', "$location", "$routeParams", "CategoryService",
