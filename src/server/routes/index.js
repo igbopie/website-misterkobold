@@ -4,7 +4,7 @@ exports.sendContact = function (req, res) {
   var email = req.body.email;
   var name = req.body.name;
   var phone = req.body.phone;
-  var comments = req.body.comment;
+  var comments = req.body.comments;
 
   emailSender.sendContact(email,name, phone, comments, function(err) {
       if(err){
@@ -22,7 +22,7 @@ exports.sendReclamations = function (req, res) {
   var email = req.body.email;
   var name = req.body.name;
   var phone = req.body.phone;
-  var comments = req.body.comment;
+  var comments = req.body.comments;
 
   emailSender.sendReclamations(email,name, phone, comments, function(err) {
       if(err){

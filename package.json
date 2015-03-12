@@ -12,6 +12,7 @@
     "cron": "^1.0.4",
     "express": "^4.12.2",
     "nodemailer": "^1.3.2",
+    "nodemailer-mailgun-transport": "git+https://github.com/orliesaurus/nodemailer-mailgun-transport.git",
     "underscore": "^1.7.0"
   },
   "engines": {
