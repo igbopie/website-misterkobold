@@ -59,14 +59,16 @@ define(['angular', 'controllers', 'services/categoryService', 'services/productS
         })
       }])
 
-    .controller('CategoryCtrl', ['$scope', '$http', "$location", "$routeParams", "CategoryService", "ProductService",
-      function ($scope, $http, $location, $routeParams, CategoryService, ProductService) {
+    .controller('CategoryCtrl', ['$scope', '$http', "$location", "$routeParams", "$rootScope","CategoryService", "ProductService",
+      function ($scope, $http, $location, $routeParams, $rootScope,  CategoryService, ProductService) {
         $scope.category = {};
         $scope.products = [];
         CategoryService.findOne($routeParams.category, function(err, category){
           if(err) console.error(err);
 
           $scope.category = category;
+
+          $rootScope.title = category.name;
 
           ProductService.listByCategory(category.id, function(err, products) {
             if(err) console.error(err);
