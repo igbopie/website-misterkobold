@@ -8,17 +8,31 @@ define(['angular', 'services'], function (angular, services) {
 
       var urlBase = '/data/categories.json';
 
-      ///api/comment/list
-      this.list = function (callback) {
-        $http.get(urlBase, {}).success(function (data) {
-          callback(data);
-        }).error(function (error) {
-          callback(error);
-        });
+      var categoryCache = [];
+
+      var fetch = function(callback) {
+        //console.log(categoryCache);
+        if (categoryCache.length > 0) {
+          callback(null,  angular.copy(categoryCache));
+        } else {
+          $http.get(urlBase, {}).success(function (data) {
+            categoryCache =  angular.copy(data);
+            callback(null, data);
+          }).error(function (error) {
+            callback(error);
+          })
+        }
       };
 
-      this.findOne = function (categoryId,callback) {
-        $http.get(urlBase, {}).success(function (data) {
+      ///api/comment/list
+      this.list = function (callback) {
+        fetch(callback);
+      };
+
+      this.findOne = function (categoryId, callback) {
+        fetch(function (err, data) {
+          if(err) return callback(err);
+
           var found;
           angular.forEach(data, function(category){
             if (category.url === categoryId) {
@@ -26,14 +40,14 @@ define(['angular', 'services'], function (angular, services) {
               return;
             }
           });
-          callback(found);
-        }).error(function (error) {
-          callback(error);
-        });
+          callback(null, found);
+        })
       };
 
       this.findOneById = function (categoryId,callback) {
-        $http.get(urlBase, {}).success(function (data) {
+        fetch(function (err, data) {
+          if(err) return callback(err);
+
           var found;
           angular.forEach(data, function(category){
             if (category.id === categoryId) {
@@ -41,10 +55,8 @@ define(['angular', 'services'], function (angular, services) {
               return;
             }
           });
-          callback(found);
-        }).error(function (error) {
-          callback(error);
-        });
+          callback(null, found);
+        })
       };
 
     }]);

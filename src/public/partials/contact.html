@@ -1,0 +1,45 @@
+<div class="row contacto">
+    <div class="col-md-12">
+
+        <h1>Cont&aacute;ctenos en el 676 60 93 39</h1>
+        <h2>&oacute; rellene este formulario y solicite una demostraci&oacute;n</h2>
+        <br />
+        <div ng-show="sent">
+            <div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Su petici�n ha sido enviada,</strong> en breve recibir&aacute; una respuesta de misterkobold.
+            </div>
+        </div>
+        <div ng-show="!sent">
+            <h5>Informaci&oacute;n de contacto</h5>
+            <div ng-show="error" class="alert alert-danger">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                <strong>Ha ocurrido un error,</strong> por favor intentelo de nuevo.
+            </div>
+
+            <div class="col-md-6">
+                <form>
+                    <div class="form-group">
+                        <label  for="inputName">Nombre*</label>
+                        <input ng-model="name" class="form-control" type="text" name="name" id="inputName" placeholder="Nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label  for="inputEmail">Correo electr&oacute;nico*</label>
+                        <input ng-model="email" class="form-control" type="email" name="email" id="inputEmail" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <label  for="inputPhone">Tel&eacute;fono*</label>
+                        <input ng-model="phone" class="form-control" type="text" name="phone" id="inputPhone" placeholder="Tel&eacute;fono" required>
+                    </div>
+                    <div class="form-group">
+                        <label  for="inputComments">Comentarios</label>
+                        <textarea ng-model="comment" class="form-control" id="inputComments" name="comments" placeholder="Comentarios" rows="10" class="input-xxlarge"></textarea>
+                    </div>
+                    <button ng-click="contact()" class="btn btn-lg btn-success pull-right">Enviar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+

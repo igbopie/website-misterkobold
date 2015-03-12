@@ -285,3 +285,11 @@ p.phone{
 h2 {
     line-height: 2;
 }
+.contacto h1 {
+    margin-bottom: 0px;
+    font-weight: bold;
+}
+.contacto h2 {
+    font-weight: bold;
+    margin-top: 0px;
+}

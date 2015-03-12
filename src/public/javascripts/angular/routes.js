@@ -12,6 +12,26 @@ define(['angular', 'app'], function (angular, app) {
         templateUrl: 'partials/index.html',
         controller: 'IndexCtrl'
       }).
+      when('/legal', {
+        templateUrl: 'partials/legal.html',
+        controller: 'IndexCtrl'
+      }).
+      when('/sobre-nosotros', {
+        templateUrl: 'partials/aboutus.html',
+        controller: 'IndexCtrl'
+      }).
+      when('/contacto', {
+        templateUrl: 'partials/contact.html',
+        controller: 'ContactCtrl'
+      }).
+      when('/reclamaciones', {
+        templateUrl: 'partials/reclamations.html',
+        controller: 'ReclamationsCtrl'
+      }).
+      when('/search/:query', {
+        templateUrl: 'partials/search.html',
+        controller: 'SearchCtrl'
+      }).
       when('/:category', {
         templateUrl: 'partials/category.html',
         controller: 'CategoryCtrl'
@@ -20,6 +40,7 @@ define(['angular', 'app'], function (angular, app) {
         templateUrl: 'partials/product.html',
         controller: 'ProductCtrl'
       }).
+
       otherwise({
         redirectTo: '/'
       });

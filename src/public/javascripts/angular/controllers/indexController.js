@@ -2,7 +2,7 @@
  * Created by igbopie on 11/16/14.
  */
 
-define(['angular', 'controllers', 'services/categoryService', 'services/productService'], function (angular, controllers) {
+define(['angular', 'controllers', 'services/categoryService', 'services/productService', 'services/contactService'], function (angular, controllers) {
 
   /* Controllers */
 
@@ -16,49 +16,125 @@ define(['angular', 'controllers', 'services/categoryService', 'services/productS
     .controller('NavCtrl', ['$scope', '$http', "$location", "$routeParams", "CategoryService",
       function ($scope, $http, $location, $routeParams, CategoryService) {
         $scope.categories = [];
-        CategoryService.list(function(categories){
+        CategoryService.list(function(err, categories){
+          if(err) console.error(err);
+
           $scope.categories = categories;
 
           $scope.categories.push({
-            url: "/sobre-nosotros",
+            url: "sobre-nosotros",
             name: "Sobre nosotros"
           });
         });
 
-        $scope.selectCategory = function(category) {
-          category.active = true;
 
-          angular.forEach($scope.categories, function(otherCategory){
-            if (otherCategory !== category){
+        $scope.$on('$routeChangeSuccess', function(){
+          var parts = $location.path().split("/");
+          if(parts && parts[1]){
+            angular.forEach($scope.categories, function(otherCategory){
+              if (otherCategory.url === parts[1]){
+                otherCategory.active = true;
+              } else {
+                otherCategory.active = false;
+              }
+            });
+          } else {
+            angular.forEach($scope.categories, function(otherCategory){
               otherCategory.active = false;
-            }
-          });
-        };
+            });
+          }
+        })
       }])
 
     .controller('CategoryCtrl', ['$scope', '$http', "$location", "$routeParams", "CategoryService", "ProductService",
       function ($scope, $http, $location, $routeParams, CategoryService, ProductService) {
         $scope.category = {};
         $scope.products = [];
-        CategoryService.findOne($routeParams.category, function(category){
+        CategoryService.findOne($routeParams.category, function(err, category){
+          if(err) console.error(err);
+
           $scope.category = category;
 
-          ProductService.listByCategory(category.id, function(products) {
+          ProductService.listByCategory(category.id, function(err, products) {
+            if(err) console.error(err);
+
             $scope.products = products;
           });
         });
       }])
+
     .controller('ProductCtrl', ['$scope', '$http', "$location", "$routeParams", "CategoryService", "ProductService",
       function ($scope, $http, $location, $routeParams, CategoryService, ProductService) {
         $scope.category = {};
         $scope.product = [];
-        CategoryService.findOne($routeParams.category, function(category){
+        CategoryService.findOne($routeParams.category, function(err, category){
+          if(err) console.error(err);
+
           $scope.category = category;
 
-          ProductService.findOne($routeParams.product, function(product) {
+          ProductService.findOne($routeParams.product, function(err, product) {
+            if(err) console.error(err);
+
             $scope.product = product;
           });
         });
+      }])
+
+    .controller('SearchCtrl', ['$scope', '$http', "$location", "$routeParams", "CategoryService", "ProductService",
+      function ($scope, $http, $location, $routeParams, CategoryService, ProductService) {
+
+        $scope.products = [];
+
+        ProductService.search($routeParams.query,function(err, products) {
+          if(err) console.error(err);
+
+          $scope.products = products;
+        });
+
+      }])
+
+    .controller('SearchFormCtrl', ['$scope', '$http', "$location", "$routeParams", "CategoryService", "ProductService",
+      function ($scope, $http, $location, $routeParams, CategoryService, ProductService) {
+        $scope.query = "";
+        $scope.search = function(query) {
+          console.log($scope.query);
+          $location.path('/search/'+query);
+        };
+
+      }])
+    .controller('ContactCtrl', ['$scope', '$http', "$location", "$routeParams", "ContactService",
+      function ($scope, $http, $location, $routeParams, ContactService) {
+        $scope.sent = false;
+        $scope.error = false;
+        $scope.contact = function() {
+          ContactService.contact($scope.email, $scope.name, $scope.phone, $scope.comment, function(err){
+            if (err){
+              $scope.error = true;
+              $scope.sent = false;
+            } else {
+              $scope.error = false;
+              $scope.sent = true;
+            }
+          });
+        };
+
+      }])
+    .controller('ReclamationsCtrl', ['$scope', '$http', "$location", "$routeParams", "ContactService",
+      function ($scope, $http, $location, $routeParams, ContactService) {
+        $scope.sent = false;
+        $scope.error = false;
+        $scope.reclamation = function() {
+          ContactService.reclamation($scope.email, $scope.name, $scope.phone, $scope.comment, function(err){
+            if (err){
+              $scope.error = true;
+              $scope.sent = false;
+            } else {
+              $scope.error = false;
+              $scope.sent = true;
+            }
+          });
+        };
+
       }])
 
     ;
