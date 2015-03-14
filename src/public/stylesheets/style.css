@@ -222,7 +222,7 @@ p.phone{
 }
 /* INDEX */
 .index .index-text{
-    top: 116px;
+    bottom: 0px;
     position: absolute;
     background: rgba(255,255,255,.8);
     width: 474px;
@@ -307,4 +307,13 @@ h2 {
 
 .ng-hide{
     display:none;
+}
+
+.promo-text{
+    position: absolute;
+    top:0;
+    right:0px;
+    padding: 15px;
+    background: rgba(255,255,255,.8);
+    text-align: right;
 }

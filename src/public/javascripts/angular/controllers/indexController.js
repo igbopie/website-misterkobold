@@ -68,7 +68,7 @@ define(['angular', 'controllers', 'services/categoryService', 'services/productS
 
           $scope.category = category;
 
-          $rootScope.title = category.name;
+          $rootScope.title = category.name+" - ";
 
           ProductService.listByCategory(category.id, function(err, products) {
             if(err) console.error(err);
