@@ -92,13 +92,13 @@ define(['angular', 'services', 'services/categoryService'], function (angular, s
                   }
                 });
               });
-              product.related = related;
+              product.related = angular.copy(related);
 
               if (product.related && product.related.length > 0) {
                 var callbacked = 0;
                 angular.forEach(product.related, function (related) {
                   CategoryService.findOneById(related.category, function (err, category) {
-                    related.category = category;
+                    related.category = angular.copy(category);
                     callbacked++;
 
                     if (callbacked >=  product.related.length ){

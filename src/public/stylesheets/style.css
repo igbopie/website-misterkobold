@@ -304,3 +304,7 @@ h2 {
     font-weight: bold;
     margin-top: 0px;
 }
+
+.ng-hide{
+    display:none;
+}

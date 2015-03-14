@@ -1,32 +1,18 @@
 <!DOCTYPE html>
 <html ng-app="misterkobold">
 <head>
-    <title ng-bind="'Misterkobold &mdash; ' + title">Misterkobold</title>
-    <!--
-    TODO
-    <title>${not empty(title)?title:''} ${not empty(title)?'-':''} ${not empty(product)?product.name:''} ${not empty(product)?'-':''} Mister Kobold - 676 60 93 39 - Aspiradores Vorwerk Kobold</title>
-    <c:choose>
-			<c:when test="${not empty(product)}" >
-				<meta name="description" content="${product.htmlDescription}">
-			</c:when>
-			<c:when test="${not empty(description)}" >
-				<meta name="description" content="${description}">
-			</c:when>
-			<c:otherwise>
-				<meta name="description" content="Agente Oficial de Vorwerk Kobold. Accesorios, aspiradores, bolsas de repuesto y el propio sistema de limpieza lo podrá encontrar en Mister Kobold.">
-			</c:otherwise>
-		</c:choose>
-
-    -->
+    <title ng-bind="title + 'Mister Kobold - 676 60 93 39 - Aspiradores Vorwerk Kobold'"> Mister Kobold - 676 60 93 39 - Aspiradores Vorwerk Kobold</title>
+    <base href="/">
+    <meta name="description" content="Agente Oficial de Vorwerk Kobold. Accesorios, aspiradores, bolsas de repuesto y el propio sistema de limpieza lo podrá encontrar en Mister Kobold.">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="">
+    <meta name="fragment" content="!">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
     <meta name="keywords" content="Kobold,Vorwerk,Vorwerk Kobold,Demostraciones,VK140,VK135,Bolsas, Aspirador, Aspiradora, Sistema de limpieza,Tobera,Filtro,Cepillo,Prologador,Kobosan">
     <meta name="robots" content="INDEX,FOLLOW" >
     <link rel="image_src" href="http://www.misterkobold.com/images/mister-kobold.png" />
     <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="/resources/images/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
 
     <link rel="stylesheet" href="/libs/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/libs/fontawesome/css/font-awesome.min.css">
@@ -34,18 +20,12 @@
 </head>
 <body>
     <div id="fb-root"></div>
-    <script>(function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/es_ES/all.js#xfbml=1";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
+
 
     <div class="container header">
         <div class="row">
             <div class="col-md-2">
-                <a href="#/" title="Mister Kobold">
+                <a href="/" title="Mister Kobold">
                 <img title="Logo Mister Kobold" class="logo" src="/images/mister-kobold.png" alt="Mister Kobold" />
                 </a>
             </div>
@@ -53,7 +33,7 @@
 
                 <div class="pull-left">
 
-                    <h4><a href="#/contacto" title="Demostraciones e información">Demostraciones e información</a></h4>
+                    <h4><a href="/contacto" title="Demostraciones e información">Demostraciones e información</a></h4>
                     <p class="phone">676 60 93 39</p>
                     <p>contacto@misterkobold.com</p>
 
@@ -64,7 +44,7 @@
                 <div class="main-menu pull-right" ng-controller="NavCtrl">
                     <ul >
                         <li ng-repeat="category in categories" ng-class="{active: category.active}" >
-                            <a href="#/{{category.url}}" title="{{category.name}}" ng-bind-html="category.name | sanitize" ></a>
+                            <a href="/{{category.url}}" title="{{category.name}}" ng-bind-html="category.name | sanitize" ></a>
                         </li>
                     </ul>
 
@@ -106,15 +86,15 @@
         <div class="row">
             <div class="col-md-6">
                 <ul>
-                    <li><a href="#/contacto" title="Contacto y demostraciones">Contacto y demostraciones</a></li><li><a href="#/reclamaciones">Reclamaciones</a> </li>
+                    <li><a href="/contacto" title="Contacto y demostraciones">Contacto y demostraciones</a></li><li><a href="/reclamaciones">Reclamaciones</a> </li>
                 </ul><br />
                 <ul class="boring">
-                    <li><a href="#/legal" title="Legal">Legal</a></li><li><a  title="Vorwerk" href="http://www.vorwerk.es/">Vorwerk®</a></li><li><a  title="Kobold" href="http://www.vorwerk.es/kobold">Kobold®</a></li>
+                    <li><a href="/legal" title="Legal">Legal</a></li><li><a  title="Vorwerk" href="http://www.vorwerk.es/">Vorwerk®</a></li><li><a  title="Kobold" href="http://www.vorwerk.es/kobold">Kobold®</a></li>
                 </ul>
                 <div class="legal">© 2013 Mister Kobold®. Todos los derechos reservados. Kobold® y Vorwerk® son marcas registradas y licenciadas en exclusiva al Grupo VORWERK®</div>
             </div>
             <div class="col-md-6 banner-footer">
-                <a title="Demostraciones e información" href="#/contacto">
+                <a title="Demostraciones e información" href="/contacto">
                 <span>Demostraciones e información</span><br />
                 contacto@misterkobold.com - 676 60 93 39
                 </a>
@@ -124,6 +104,7 @@
     </div>
 
 
+    <script  data-main="javascripts/angular/main" src="/libs/requirejs/require.js"></script>
     <script type="text/javascript">
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-22025472-1']);
@@ -135,6 +116,12 @@
             var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
         })();
     </script>
-    <script  data-main="javascripts/angular/main" src="/libs/requirejs/require.js"></script>
+    <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/es_ES/all.js#xfbml=1";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
 </body>
 </html>

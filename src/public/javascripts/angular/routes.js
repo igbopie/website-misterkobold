@@ -6,7 +6,10 @@
 
 define(['angular', 'app'], function (angular, app) {
 
-  return app.config(['$routeProvider', function ($routeProvider) {
+  return app.config(['$routeProvider','$locationProvider', function ($routeProvider, $locationProvider, $location) {
+
+    $locationProvider.html5Mode(true);
+    $locationProvider.hashPrefix("!");
     $routeProvider.
       when('/', {
         templateUrl: 'partials/index.html',

@@ -90,6 +90,8 @@ define(['angular', 'controllers', 'services/categoryService', 'services/productS
           ProductService.findOne($routeParams.product, function(err, product) {
             if(err) console.error(err);
 
+            console.log(product);
+
             $scope.product = product;
           });
         });
