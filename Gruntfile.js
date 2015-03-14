@@ -72,6 +72,9 @@ module.exports = function(grunt) {
           var pageUrl = pageObject.url;
           if (visited[pageUrl]){ return callback()};
           visited[pageUrl] = pageObject;
+          pageUrl = pageUrl.replace(/\/#!\//g, '/');
+
+          console.log(pageUrl);
           var url = "http://127.0.0.1:3000" + pageUrl;
           page.open(url, function (status) {
             console.log("opened", status);

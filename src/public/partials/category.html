@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-12">
         <ul class="breadcrumb">
-            <li><a href="/" title="Inicio" >Inicio</a></li>
+            <li><a href="/#!/" title="Inicio" >Inicio</a></li>
             <li class="active" ng-bind-html="category.name | sanitize"></li>
         </ul>
     </div>
@@ -22,10 +22,10 @@
     <div class="col-md-12"><hr /></div>
     <div class="col-md-5"><img class="product-img img-responsive"  ng-src="/images/product/{{product.image}}" /></div>
     <div class="col-md-6">
-        <h3><a title="${product.name}" href="/{{category.url}}/{{product.url}}" >{{product.name}}</a></h3>
+        <h3><a title="${product.name}" href="/#!/{{category.url}}/{{product.url}}" >{{product.name}}</a></h3>
         <div class="price">{{product.price}}&euro;</div>
         <div ng-bind-html="product.description | sanitize"></div>
-        <a title="Solicitar una demostraci&oacute;n" class="btn btn-lg btn-success" href="/contacto" >Solicitar una demostraci&oacute;n</a>
-        <a title="{{product.name}}" class="btn btn-lg" href="/{{category.url}}/{{product.url}}" >Saber m&aacute;s</a>
+        <a title="Solicitar una demostraci&oacute;n" class="btn btn-lg btn-success" href="/#!/contacto" >Solicitar una demostraci&oacute;n</a>
+        <a title="{{product.name}}" class="btn btn-lg" href="/#!/{{category.url}}/{{product.url}}" >Saber m&aacute;s</a>
     </div>
 </div>

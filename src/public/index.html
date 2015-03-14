@@ -2,7 +2,7 @@
 <html ng-app="misterkobold">
 <head>
     <title ng-bind="title + 'Mister Kobold - 676 60 93 39 - Aspiradores Vorwerk Kobold'"> Mister Kobold - 676 60 93 39 - Aspiradores Vorwerk Kobold</title>
-    <base href="/">
+    <base href="/#!/">
     <meta name="description" content="Agente Oficial de Vorwerk Kobold. Accesorios, aspiradores, bolsas de repuesto y el propio sistema de limpieza lo podrá encontrar en Mister Kobold.">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,7 +25,7 @@
     <div class="container header">
         <div class="row">
             <div class="col-md-2">
-                <a href="/" title="Mister Kobold">
+                <a href="/#!/" title="Mister Kobold">
                 <img title="Logo Mister Kobold" class="logo" src="/images/mister-kobold.png" alt="Mister Kobold" />
                 </a>
             </div>
@@ -33,7 +33,7 @@
 
                 <div class="pull-left">
 
-                    <h4><a href="/contacto" title="Demostraciones e información">Demostraciones e información</a></h4>
+                    <h4><a href="/#!/contacto" title="Demostraciones e información">Demostraciones e información</a></h4>
                     <p class="phone">676 60 93 39</p>
                     <p>contacto@misterkobold.com</p>
 
@@ -44,7 +44,7 @@
                 <div class="main-menu pull-right" ng-controller="NavCtrl">
                     <ul >
                         <li ng-repeat="category in categories" ng-class="{active: category.active}" >
-                            <a href="/{{category.url}}" title="{{category.name}}" ng-bind-html="category.name | sanitize" ></a>
+                            <a href="/#!/{{category.url}}" title="{{category.name}}" ng-bind-html="category.name | sanitize" ></a>
                         </li>
                     </ul>
 
@@ -86,15 +86,15 @@
         <div class="row">
             <div class="col-md-6">
                 <ul>
-                    <li><a href="/contacto" title="Contacto y demostraciones">Contacto y demostraciones</a></li><li><a href="/reclamaciones">Reclamaciones</a> </li>
+                    <li><a href="/#!/contacto" title="Contacto y demostraciones">Contacto y demostraciones</a></li><li><a href="/#!/reclamaciones">Reclamaciones</a> </li>
                 </ul><br />
                 <ul class="boring">
-                    <li><a href="/legal" title="Legal">Legal</a></li><li><a  title="Vorwerk" href="http://www.vorwerk.es/">Vorwerk®</a></li><li><a  title="Kobold" href="http://www.vorwerk.es/kobold">Kobold®</a></li>
+                    <li><a href="/#!/legal" title="Legal">Legal</a></li><li><a  title="Vorwerk" href="http://www.vorwerk.es/">Vorwerk®</a></li><li><a  title="Kobold" href="http://www.vorwerk.es/kobold">Kobold®</a></li>
                 </ul>
                 <div class="legal">© 2013 Mister Kobold®. Todos los derechos reservados. Kobold® y Vorwerk® son marcas registradas y licenciadas en exclusiva al Grupo VORWERK®</div>
             </div>
             <div class="col-md-6 banner-footer">
-                <a title="Demostraciones e información" href="/contacto">
+                <a title="Demostraciones e información" href="/#!/contacto">
                 <span>Demostraciones e información</span><br />
                 contacto@misterkobold.com - 676 60 93 39
                 </a>

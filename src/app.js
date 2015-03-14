@@ -11,13 +11,14 @@ var _ = require('lodash');
 // all environments
 // In our app.js configuration
 app.use(function(req, res, next) {
+  console.log(req.url);
   var fragment = req.query._escaped_fragment_;
 
   // If there is no fragment in the query params
   // then we're not serving a crawler
   if (!_.isString(fragment)) return next();
 
-  fragment = req._parsedUrl.pathname + fragment;
+  //fragment = req._parsedUrl.pathname + fragment;
 
   // If the fragment is empty, serve the
   // index page
@@ -38,10 +39,12 @@ app.use(function(req, res, next) {
 
   // Serve the static html snapshot
   try {
-    var file = __dirname + "/public/snapshots/snapshot_" + fragment;
-    res.sendFile(file);
+    var file = __dirname + "/public/snapshots/snapshot____" + fragment;
+    res.sendFile(file, function(err){
+      if (err) res.sendStatus(500);
+    });
   } catch (err) {
-    res.send(404);
+    res.sendStatus(404);
   }
 });
 app.set('port', process.env.PORT || 3000);
@@ -55,19 +58,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 var dpdRoutes = [];
 app.get('/[^\.]+$', function(req, res, next){
-  // need to be inside app.get, as attach router init is very lazy now.
-  //var dpdRoutes = _(process.server.resources).pluck('name').compact().value() ;
-  var first_path = req.path.split('/');
-
-  if(dpdRoutes.indexOf(first_path[1]) > -1) // dpd requests
-  {
-    return next();
-  }
-  else // angular requests
-  {
-    res.sendFile("index.html", { root: __dirname + '/public' });
-  }
-
+  // html5 mode
+  //res.sendFile("index.html", { root: __dirname + '/public' });
+  res.writeHead(302, {
+    'Location': '/#!'+req.path
+    //add other headers here...
+  });
+  res.end();
 });
 
 app.post('/contact', index.sendContact);
