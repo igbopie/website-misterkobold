@@ -15,7 +15,9 @@ app.use(function(req, res, next) {
 
   // If there is no fragment in the query params
   // then we're not serving a crawler
-  if (!fragment) return next();
+  if (!_.isString(fragment)) return next();
+
+  fragment = req._parsedUrl.pathname + fragment;
 
   // If the fragment is empty, serve the
   // index page
