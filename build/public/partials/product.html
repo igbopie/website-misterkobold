@@ -1,0 +1,67 @@
+<div itemscope itemtype="http://data-vocabulary.org/Product">
+    <div class="row">
+    <div class="col-md-12">
+        <ul class="breadcrumb">
+            <li><a href="/#!/" title="Inicio" >Inicio</a></li>
+            <li><a href="/#!/{{category.url}}" title="{{category.name}}" ng-bind-html="category.name | sanitize"></a></li>
+            <li class="active">{{product.name}}</li>
+        </ul>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-3"><img class="product-img img-responsive" title="{{product.name}}" alt="{{product.name}}" itemprop="image" ng-src="/images/product/{{product.image}}" /></div>
+            <div class="col-md-9">
+                <h3><a href="/#!/{{category.url}}/{{product.url}}" ><span itemprop="name">{{product.name}}</span></a></h3>
+                <div class="price"> <span itemprop="offerDetails" itemscope itemtype="http://data-vocabulary.org/Offer"> <meta itemprop="currency" content="EUR" /><span itemprop="price">{{product.price}}</span>&euro;</span></div>
+                <span itemprop="description" ng-bind-html="product.description | sanitize"></span>
+                <a class="btn btn-lg btn-success" href="/#!/contacto">Solicitar una demostración</a>
+            </div>
+        </div>
+
+        <div class="product-description">
+            <div ng-show="product.longDescription">
+                <hr />
+                <div>
+                    <h3>Descripción</h3>
+                    <div ng-bind-html="product.longDescription | sanitize"></div>
+                </div>
+            </div>
+
+            <div ng-show="product.contents">
+                <hr />
+                <div class="product-contents">
+                    <h3>Contenidos</h3>
+                    <div ng-bind-html="product.contents | sanitize"></div>
+                </div>
+            </div>
+
+            <div ng-show="product.specifications">
+                <hr />
+                <div class="product-contents">
+                    <h3>Especificaciones TÈcnicas</h3>
+                    <div ng-bind-html="product.specifications | sanitize"></div>
+                </div>
+            </div>
+
+            <div ng-show="product.related.length > 0">
+                <hr />
+                <div >
+                    <h3>Productos Relacionados</h3>
+                    <div>
+                        <div ng-repeat="related in product.related"  class="col-md-3 related" >
+                            <a href="/#!/{{related.category.url}}/{{related.url}}" >
+                                <span>{{related.name}}</span>
+                                <span class="price pull-right">{{related.price}}€</span>
+                                <img ng-src="/images/product/{{related.image}}" class="img-responsive"  title="{{related.name}}" alt="{{related.name}}"/>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+</div>
