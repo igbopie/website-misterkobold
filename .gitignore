@@ -17,5 +17,4 @@ build
 node_modules
 .idea
 db
-src/public/libs
-src/public/libs/**
+build

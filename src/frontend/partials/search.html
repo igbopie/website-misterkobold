@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-md-12">
+        <ul class="breadcrumb">
+            <li><a href="/#!/" >Inicio</a></li>
+            <li class="active">B&uacute;squeda</li>
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <h1>Resultados de b&uacute;squeda</h1>
+
+        <div class="alert alert-info" ng-show="!products.length">
+            <strong>No hay resultados</strong>, pruebe con otra palabra o llamenos al 676 60 93 39.
+        </div>
+    </div>
+</div>
+
+
+<div class="row" ng-repeat="product in products"  >
+    <div class="col-md-12"><hr /></div>
+    <div class="col-md-3"><img class="product-img img-responsive" ng-src="/images/product/{{product.image}}" /></div>
+    <div class="col-md-9">
+        <h3><a href="/#!/{{product.category.url}}/{{product.url}}" >{{product.name}}</a></h3>
+        <div class="price">{{product.price}}&euro;</div>
+        <div ng-bind-html="product.description | sanitize"></div>
+        <a class="btn btn-lg btn-success" href="/#!/contacto">Solicitar una demostraci&oacute;n</a>
+        <a class="btn btn-lg" href="/#!/{{product.category.url}}/{{product.url}}" >Saber m&aacute;s</a>
+    </div>
+
+</div>
+

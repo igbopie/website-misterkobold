@@ -19,7 +19,7 @@ module.exports = function(grunt) {
     htmlSnapshot: {
       all: {
         options: {
-          snapshotPath: 'src/public/snapshots/',
+          snapshotPath: 'build/public/snapshots/',
           sitePath: 'http://127.0.0.1:3000/',
           msWaitForPages: 1000,
           removeScripts: true,
@@ -108,6 +108,6 @@ module.exports = function(grunt) {
 
 
   // Default task(s).
-  grunt.registerTask('default', ['crawl','htmlSnapshot']);
+  grunt.registerTask('gen-snapshots', ['crawl','htmlSnapshot']);
 
 };
