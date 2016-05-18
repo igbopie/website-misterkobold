@@ -1,5 +1,17 @@
 
   {
+    "id": "pb420",
+    "class": "com.misterkobold.domain.Product",
+    "weight": "70",
+    "category": "categoryAccesorios",
+    "name": "Polsterboy",
+    "url": "polsterboy",
+    "price": "265,00",
+    "htmlDescription": "Este práctico y manejable elemento es ideal para la limpieza de polvo en sofás, butacas y textiles en general.",
+    "description": "       <p style='text-align: justify;'>Este práctico y manejable elemento es ideal para la limpieza de polvo en sofás, butacas y textiles en general. Si usted tiene mascotas, no puede dejar marchar la oportunidad de adquirir este magnífico producto que limpia en profundidad de forma rápida y cómoda.</p>     ",
+    "image": "vk150/PB.png"
+  },
+  {
     "id": "vk150kit1",
     "class": "com.misterkobold.domain.Product",
     "weight": "20",

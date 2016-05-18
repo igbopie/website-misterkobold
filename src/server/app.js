@@ -18,28 +18,17 @@ app.use(function(req, res, next) {
   // then we're not serving a crawler
   if (!_.isString(fragment)) return next();
 
-  //fragment = req._parsedUrl.pathname + fragment;
 
-  // If the fragment is empty, serve the
-  // index page
-  if (fragment === "" || fragment === "/")
-    fragment = "/.html";
+  if (fragment.charAt(0) !== "/") {
+    fragment = "/" + fragment;
+  }
 
-  // If fragment does not start with '/'
-  // prepend it to our fragment
-  if (fragment.charAt(0) !== "/")
-    fragment = '/' + fragment;
-
-  // If fragment does not end with '.html'
-  // append it to the fragment
-  if (fragment.indexOf('.html') == -1)
-    fragment += ".html";
-
-  fragment = fragment.replace(/\//g, '_');
+  fragment = "#!" + fragment + "/index.html"
 
   // Serve the static html snapshot
   try {
-    var file = __dirname + "/public/snapshots/snapshot____" + fragment;
+    var file = __dirname + "/public/snapshots/" + fragment;
+    console.log(file);
     res.sendFile(file, function(err){
       if (err) res.sendStatus(500);
     });
@@ -47,6 +36,7 @@ app.use(function(req, res, next) {
     res.sendStatus(404);
   }
 });
+
 app.set('port', process.env.PORT || 3000);
 app.use(bodyParser.json());       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
